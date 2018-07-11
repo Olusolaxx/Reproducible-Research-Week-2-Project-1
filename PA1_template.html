@@ -125,7 +125,12 @@ $(document).ready(function () {
 
 </div>
 
+<div id="TOC">
+true
+</div>
 
+<pre class="r"><code>library(knitr)
+opts_chunk$set(echo = TRUE, results = TRUE, cache = TRUE)</code></pre>
 <pre class="r"><code># Set working directory
 # Download file
 
@@ -174,9 +179,8 @@ summary(dataFile)</code></pre>
 ##  NA's   :2304</code></pre>
 <pre class="r"><code># Create data without NAs to compute mean later
 dataFileNAs &lt;- is.na(dataFile$steps)
-cleanDataFile &lt;- dataFile[!dataFileNAs,]
-
-# Use aggregate() to calculate the total number of steps taken per day
+cleanDataFile &lt;- dataFile[!dataFileNAs,]</code></pre>
+<pre class="r"><code># Use aggregate() to calculate the total number of steps taken per day
 # I would have used tapply() but tapply() will convert dataFile from a data frame into an array(vector)
 # I want to use ggplot() to make the histogram which only works with data frame 
 stepsDaily &lt;- aggregate(steps ~ date, dataFile, sum, na.rm = TRUE)
